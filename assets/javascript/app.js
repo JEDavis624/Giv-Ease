@@ -8,31 +8,28 @@ jQuery.ajaxPrefilter(function (options) {
     }
 });
 // ========== Query Variables ==========
-// let name = user input
-// let city = user input
-// let state = user input 
-// let category = user input
-// let responseNum = user input
-let queryURL = "http://data.orghunter.com/v1/charitysearch?user_key=" + charityAPIkey + "&eligible=1&city=Chicago"
+// let charityName = "&charityName=" + $("#charityName").val().trim();
+// let city = "&city=" + $("#city-input").val().trim();
+// let zip = "&zipCode=" + $("#zip").val().trim();
+// let searchTerm = "&searchTerm=" + $("#searchTerm").val().trim();
+// ========== Query URL ==========
+let queryURL = "http://data.orghunter.com/v1/charitysearch?user_key=" + charityAPIkey + "&eligible=1&" + charityName + city + zip + searchTerm;
 // ========== Charity Ajax Call ==========
 $.ajax({
     url: queryURL,
     method: "GET"
 }).then(function (response) {
-    console.log(response.data);
-    let orgLat;
-    let orgLon;
-    let orgName;
+    let orgArray = [];
     for (i = 0; i < response.data.length; i++) {
-        // ========== Response Log ==========
-        console.log('==========');
-        console.log(response.data[i].charityName);
-        console.log(response.data[i].url);
-        console.log(response.data[i].donationUrl);
-        console.log(response.data[i].city + ', ' + response.data[i].state);
-        console.log(response.data[i].latitude);
-        console.log(response.data[i].longitude);
-        console.log(response.data[i].missionStatement);
+        // ========== Charity Geolocation Object ==========
+        const orgObject = {
+            name: response.data[i].charityName,
+            url: response.data[i].url,
+            donationUrl: response.data[i].donationUrl,
+            location: response.data[i].city + ', ' + response.data[i].state,
+            latitude: response.data[i].latitude,
+            longitude: response.data[i].longitude
+        }
         // ========== MVP Display ==========
         $('#displayDiv').append('==============================' + '<br>'
             + 'Charity: ' + response.data[i].charityName +
@@ -41,33 +38,34 @@ $.ajax({
             '<br>' + 'Location: ' + response.data[i].city + ', ' + response.data[i].state +
             '<br>' + 'Mission Statement: ' + response.data[i].missionStatement +
             '<br>');
-        // ========== Map Marker GeoLocation Variables ==========
-        orgLat = response.data[i].latitude;
-        orgLon = response.data[i].longitude;
-        orgName = response.data[i].charityName;
-        console.log(orgLat + ', ' + orgLon);
+        // ========== Charity Array Population ==========
+        orgArray.push(orgObject);
     };
-    initMap(orgLat, orgLon, orgName);
+    console.log('========== Org Array ==========');
+    console.log(orgArray);
+    initMap(orgArray);
 });
 // Note: This example requires that you consent to location sharing when
 // prompted by your browser. If you see the error "The Geolocation service
 // failed.", it means you probably did not give permission for the browser to
 // locate you.
 var map, infoWindow;
-function initMap(orgLat, orgLon, orgName) {
+function initMap(orgArray) {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: -34.397, lng: 150.644 },
         zoom: 6
     });
     infoWindow = new google.maps.InfoWindow;
-    // ========== Google Maps API Marker Test ----------
-    let myLatlng = new google.maps.LatLng(orgLat, orgLon);
-    let marker = new google.maps.Marker({
-        position: myLatlng,
-        title: orgName
-    });
-    // To add the marker to the map, call setMap();
-    marker.setMap(map);
+    // ========== Google Maps API Marker Population ==========
+    for (i = 0; i < orgArray.length; i++) {
+        let myLatlng = new google.maps.LatLng(orgArray[i].latitude, orgArray[i].longitude);
+        let marker = new google.maps.Marker({
+            position: myLatlng,
+            title: orgArray[i].name
+        });
+        // To add the marker to the map, call setMap();
+        marker.setMap(map);
+    };
     // ========== Try HTML5 geolocation ==========
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -87,7 +85,7 @@ function initMap(orgLat, orgLon, orgName) {
         handleLocationError(false, infoWindow, map.getCenter());
     }
 }
-// ========== Google API Geolocation (DO NOT TOUCH) ==========
+// ========== Google API Geolocation Error Handling (DO NOT TOUCH) ==========
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ?
