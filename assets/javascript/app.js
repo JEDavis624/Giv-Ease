@@ -8,12 +8,12 @@ jQuery.ajaxPrefilter(function (options) {
     }
 });
 // ========== Query Variables ==========
-// let name = user input
-// let city = user input
-// let state = user input 
-// let category = user input
-// let responseNum = user input
-let queryURL = "http://data.orghunter.com/v1/charitysearch?user_key=" + charityAPIkey + "&eligible=1&city=Chicago&rows=30"
+let charityName = "&charityName=" + $("#charityName").val().trim();
+let city = "&city=" + $("#city-input").val().trim();
+let zip = "&zipCode=" + $("#zip").val().trim();
+let searchTerm = "&searchTerm=" + $("#searchTerm").val().trim();
+
+let queryURL = "http://data.orghunter.com/v1/charitysearch?user_key=" + charityAPIkey + "&eligible=1&" + charityName + city + zip + searchTerm;
 // ========== Charity Ajax Call ==========
 $.ajax({
     url: queryURL,
