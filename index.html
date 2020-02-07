@@ -9,18 +9,60 @@
     <script src='https://kit.fontawesome.com/f843bc76a3.js' crossorigin='anonymous'></script>
     <link rel='stylesheet' type='text/css' href='assets/css/style.css'>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+
+
     <title>GivEase</title>
 </head>
 
 <body>
+    <!--NAVBAR-->
+    <div class="w3-content" style="max-width:2000px;margin-top:46px"></div>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
+        <a href="index.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="Contact.html">Contact</a>
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+    <!--MAP-->
     <div id="map"></div>
-    <div id='displayDiv'></div>
-    <script rel='javascript' type='text/javascript' src='assets/javascript/app.js'></script>
-    <!--Google Maps API functionality. Do not touch below.-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3_355xgTrbvLb3K_FE_2bpig4WBtCGgM"
-        async defer></script>
-    <!--Google Maps API functionality. Do not touch above.-->
+    <!--IMAGE-->
+    <div class="hero-image">
+        <div class="container" style="float: right;">
+            <img src="https://hips.hearstapps.com/ghk.h-cdn.co/assets/17/41/2048x1024/landscape-1507759885-gettyimages-492878594.jpg?resize=480:*"
+                alt="Avatar" class="image" >
+                
+            <div class="overlay">
+                <div class="text">Want to Make A Donation Today ? Don't Know What to Look For ?, Well you've come to the
+                    right place to get started !</div>
+                    
+            </div>
+        </div>
+        <!--USER INPUT FORM-->
+        <form id="city-form">
+            <label for="city-input">Search for a Charity</label><br>
+            <input id="charity-name" type="text" placeholder="Charity Name.." name="search">
+            <input id="city" type="text" placeholder="City.." name="search">
+            <input id="zip" type="text" placeholder="Zip.." name="search">
+            <input id="searchTerm" type="text" placeholder="Keyword.." name="search">
+            <input id="find-charity" type="submit" value="Search">
+        </form>
+        <!--SEARCH RESULTS-->
+        <div id='displayDiv'></div>
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+            }
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+        </script>
+        <script rel='javascript' type='text/javascript' src='assets/javascript/app.js'></script>
+        <!--Google Maps API functionality. Do not touch below.-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3_355xgTrbvLb3K_FE_2bpig4WBtCGgM" async
+            defer></script>
+        <!--Google Maps API functionality. Do not touch above.-->
 </body>
 
 </html>
