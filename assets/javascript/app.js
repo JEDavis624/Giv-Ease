@@ -8,35 +8,28 @@ jQuery.ajaxPrefilter(function (options) {
     }
 });
 // ========== Query Variables ==========
-// let name = user input
-// let city = user input
-// let state = user input 
-// let category = user input
-// let responseNum = user input
-let queryURL = "http://data.orghunter.com/v1/charitysearch?user_key=" + charityAPIkey + "&eligible=1&city=Chicago&rows=30"
+// let charityName = "&charityName=" + $("#charityName").val().trim();
+// let city = "&city=" + $("#city-input").val().trim();
+// let zip = "&zipCode=" + $("#zip").val().trim();
+// let searchTerm = "&searchTerm=" + $("#searchTerm").val().trim();
+// ========== Query URL ==========
+let queryURL = "http://data.orghunter.com/v1/charitysearch?user_key=" + charityAPIkey + "&eligible=1";
 // ========== Charity Ajax Call ==========
 $.ajax({
     url: queryURL,
     method: "GET"
 }).then(function (response) {
-    console.log(response.data);
     let orgArray = [];
     for (i = 0; i < response.data.length; i++) {
         // ========== Charity Geolocation Object ==========
         const orgObject = {
             name: response.data[i].charityName,
+            url: response.data[i].url,
+            donationUrl: response.data[i].donationUrl,
+            location: response.data[i].city + ', ' + response.data[i].state,
             latitude: response.data[i].latitude,
             longitude: response.data[i].longitude
         }
-        // ========== Response Log ==========
-        console.log('==========');
-        console.log(response.data[i].charityName);
-        console.log(response.data[i].url);
-        console.log(response.data[i].donationUrl);
-        console.log(response.data[i].city + ', ' + response.data[i].state);
-        console.log(response.data[i].latitude);
-        console.log(response.data[i].longitude);
-        console.log(response.data[i].missionStatement);
         // ========== MVP Display ==========
         $('#displayDiv').append('==============================' + '<br>'
             + 'Charity: ' + response.data[i].charityName +
@@ -47,10 +40,8 @@ $.ajax({
             '<br>');
         // ========== Charity Array Population ==========
         orgArray.push(orgObject);
-        console.log('========== Org Object Test ==========');
-        console.log(orgObject);
     };
-    console.log('========== Org Array Test ==========');
+    console.log('========== Org Array ==========');
     console.log(orgArray);
     initMap(orgArray);
 });
