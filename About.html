@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: block}
+
+
+   
+    
+    
+   .container {
+     position: relative;
+     width: 50%;
+   }
+   
+   .image {
+     display: block;
+     width: 100%;
+     height: auto;
+   }
+   
+   .overlay {
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     height: 100%;
+     width: 100%;
+     opacity: 0;
+     transition: .5s ease;
+     background-color: #008CBA;
+   }
+   
+   .container:hover .overlay {
+     opacity: 1;
+   }
+   
+   .text {
+     color: white;
+     font-size: 20px;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     -webkit-transform: translate(-50%, -50%);
+     -ms-transform: translate(-50%, -50%);
+     transform: translate(-50%, -50%);
+     text-align: center;
+   }
+   body {
+ font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+ height: 100%;
+ width: 0;
+ position: fixed;
+ z-index: 1;
+ top: 0;
+ left: 0;
+ background-color: #111;
+ overflow-x: hidden;
+ transition: 0.5s;
+ padding-top: 60px;
+}
+
+.sidenav a {
+ padding: 8px 8px 8px 32px;
+ text-decoration: none;
+ font-size: 25px;
+ color: #818181;
+ display: block;
+ transition: 0.3s;
+}
+
+.sidenav a:hover {
+ color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+ position: absolute;
+ top: 0;
+ right: 25px;
+ font-size: 36px;
+ margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+ .sidenav {padding-top: 15px;}
+ .sidenav a {font-size: 18px;}
+}
+body { 
+  background: lightblue url("img_heart.jpg") no-repeat fixed center; 
+}
+
+
+
+</style>
+
+<body>
+    <div class="w3-content" style="max-width:2000px;margin-top:46px"></div>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        
+        <a href ="index.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="Contact.html">Contact</a>
+      </div>
+    
+      
+      <p></p>
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+      
+      <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+      }
+      
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+  
+      
+      var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 4000);    
+}
+
+  
+      </script>
+   
+   
+   
+    <div class="mySlides w3-display-container w3-center">
+        <img src="https://media.timeout.com/images/105315433/630/472/image.jpg" style="widows: 50px;">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+          <h3>Los Angeles</h3>
+         </div>  
+        </div>
+        <div class="mySlides w3-display-container w3-center">
+            <img src="https://static01.nyt.com/images/2007/12/12/dining/12charity-600.jpg" style="widows: 50px;">
+            <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+              <h3>New York</h3>
+           </div>    
+            </div>
+            <div class="mySlides w3-display-container w3-center">
+                <img src="https://better.net/chicago/wp-content/uploads/sites/2/2017/07/charity-run-Run-for-Gus-Lurie.jpg" style="widows: 50px;">
+                <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+                  <h3>Chicago</h3>  
+                </div>
+              </div>
+
+              <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+                <h2 class="w3-wide">Giv-Ease</h2>
+                <p class="w3-opacity"><i>We love giving back to our communities! </i></p>
+                <p class="w3-justify">Welcome to our Website for charities and communites that you can personally give back to or participate in!
+                Our focus is to try to bring people together and help make a change in our world, You can make a change today 
+                and help raise awarness to these everyday causes that is affecting our communites and our world. YOU can make a difference today!
+                </p>
+                
+               
+</body>
+</html>
