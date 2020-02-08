@@ -1,8 +1,8 @@
 /* Always set the map height explicitly to define the size of the div
 * element that contains the map. */
 #map {
-    height: 50%;
-    width: 50%;
+    height: 500px;
+    width: 100%;
 }
 
 /* Optional: Makes the sample page fill the window. */
@@ -13,26 +13,54 @@ body {
     padding: 0;
 }
 
+.main-nav {
+  display: flex;
+  flex-direction: row;
+}
+
+.hamburger-icon {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #333;
+  width: 50px;
+  color: #fff;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.map-container {
+  width: 49.5%;
+}
+
 /*Image In Home Page (index.html)*/
-.container {
+.hero-image-container {
     position: relative;
-    width: 50%;
+    width: 49.5%;
+    height: 500px;
   }
-  
-  .image {
-    display: block;
+
+  .hero-image-wrapper {
+    position: relative;
+    height: 100%;
+  }
+
+  .hero-image {
     width: 100%;
-    height: auto;
-    position:relative;
-    top: -330px;
+    height: 100%;
   }
   
   .overlay {
     position: absolute;
-    top: -330px;
-    bottom: 0;
-    left: 0;
-    right: 0;
     height: 100%;
     width: 100%;
     opacity: 0;
@@ -40,7 +68,7 @@ body {
     background-color: #008CBA;
   }
   
-  .container:hover .overlay {
+  .hero-image-container:hover .overlay {
     opacity: 1;
   }
   
@@ -87,12 +115,13 @@ font-family: "Lato", sans-serif;
 }
 
 .sidenav .closebtn {
-  position: absolute;
+  /* position: absolute;
   top: 0;
-  right: 25px;
+  right: 25px; */
   font-size: 36px;
   margin-left: 50px;
 }
+
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
@@ -107,12 +136,11 @@ body {
 .topnav {
     background-color: #333;
     overflow: hidden;
+    width: 100%;
   }
   
 
   .topnav a {
-    float: left;
-    display: block;
     color: #f2f2f2;
     text-align: justify;
     padding: 14px 16px;
