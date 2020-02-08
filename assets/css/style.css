@@ -137,3 +137,7 @@ body {
   .topnav .icon {
     display: none;
   }
+
+  .mySlides {
+    display: none
+}

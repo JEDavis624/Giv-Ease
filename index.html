@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-    <link rel='stylesheet' type='text/css' href='assets/css/reset.css'>
-    <script src='https://kit.fontawesome.com/f843bc76a3.js' crossorigin='anonymous'></script>
-    <link rel='stylesheet' type='text/css' href='assets/css/style.css'>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
+        integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
+    <script src="https://kit.fontawesome.com/f843bc76a3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <title>Giv-Ease</title>
 </head>
 
@@ -21,11 +23,10 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
         <a href="index.html">Home</a>
-        <a href="About.html">About</a>
-        <a href="Contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
     </div>
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
-
     <!--TopNav-->
     <div class="topnav" id="myTopnav">
         <a href="index.html" class="active">Giv-Ease</a>
@@ -33,21 +34,17 @@
             <i class="fa fa-bars"></i>
         </a>
     </div>
-
     <!--MAP-->
     <div id="map"></div>
     <!--IMAGE-->
     <div class="hero-image">
         <div class="container" style="float: right;">
-            <img src="assets/img/index-pic.jpg" alt="GivEase" class="image" >
-
+            <img src="assets/img/index-pic.jpg" alt="GivEase" class="image">
             <div class="overlay">
                 <div class="text">Want to Make A Donation Today ? Don't Know What to Look For ?, Well you've come to the
                     right place to get started !</div>
-
             </div>
         </div>
-
         <!--USER INPUT FORM-->
         <form id="city-form">
             <label for="city-input">Search for a Charity</label><br>
@@ -69,8 +66,9 @@
         </script>
         <script rel='javascript' type='text/javascript' src='assets/javascript/app.js'></script>
         <!--Google Maps API functionality. Do not touch below.-->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3_355xgTrbvLb3K_FE_2bpig4WBtCGgM&callback=initMapStart" async
-            defer></script>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3_355xgTrbvLb3K_FE_2bpig4WBtCGgM&callback=initMapStart"
+            async defer></script>
         <!--Google Maps API functionality. Do not touch above.-->
 </body>
 

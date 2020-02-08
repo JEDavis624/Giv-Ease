@@ -71,13 +71,18 @@ $("#find-charity").click(function () {
                 longitude: response.data[i].longitude
             }
             // ========== MVP Display ==========
-            $('#displayDiv').append('==============================' + '<br>'
-                + 'Charity: ' + response.data[i].charityName +
-                '<br>' + '<a href=' + response.data[i].url + '>' + 'Get Info</a>' +
-                '<br>' + '<a href=' + response.data[i].donationUrl + '>' + 'Donate</a>' +
-                '<br>' + 'Location: ' + response.data[i].city + ', ' + response.data[i].state +
-                '<br>' + 'Mission Statement: ' + response.data[i].missionStatement +
-                '<br>');
+            $('#displayDiv').append('<div class="card" style="width: 18rem;">' +
+                '<div class="card-header">' +
+                response.data[i].charityName +
+                '</div>' +
+                '<ul class="list-group list-group-flush">' +
+                '<li class="list-group-item">' + '<a href=' + response.data[i].url + '>' + 'Get Info</a>' + '</li>' +
+                '<li class="list-group-item">' + '<a href=' + response.data[i].donationUrl + '>' + 'Donate</a>' + '</li>' +
+                '<li class="list-group-item">' + response.data[i].city + ', ' + response.data[i].state + ' ' + response.data[i].zipCode + '</li>' +
+                '<li class="list-group-item">' + response.data[i].missionStatement + '</li>' +
+                '</ul>' +
+                '</div>'
+            );
             // ========== Charity Array Population ==========
             orgArray.push(orgObject);
         };
