@@ -1,25 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-    body {
-        font-family: "Lato", sans-serif
-    }
 
-    .mySlides {
-        display: none
-    }
-</style>
-    <title>Giv-Ease About</title>
+    <title>Document</title>
 </head>
-
 <link rel='stylesheet' type='text/css' href='assets/css/reset.css'>
 <script src='https://kit.fontawesome.com/f843bc76a3.js' crossorigin='anonymous'></script>
 <link rel='stylesheet' type='text/css' href='assets/css/style.css'>
@@ -27,7 +19,6 @@
 
 
 <body>
-    <!--SideNav-->
     <div class="w3-content" style="max-width:2000px;margin-top:46px"></div>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -37,13 +28,7 @@
         <a href="contact.html">Contact</a>
     </div>
 
-    <!--TopNav-->
-    <div class="topnav" id="myTopnav">
-        <a href="index.html" class="active">Giv-Ease</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
-    </div>
+
 
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
 
@@ -59,28 +44,28 @@
 
     </script>
 
-    <!--Picture Slides-->
+
 
     <div class="mySlides w3-display-container w3-center">
-        <img src="assets/img/about1.jpg" alt="picnic" style="widows: 50px;">
+        <img src="https://media.timeout.com/images/105315433/630/472/image.jpg" style="widows: 50px;">
         <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
             <h3>Los Angeles</h3>
         </div>
     </div>
     <div class="mySlides w3-display-container w3-center">
-        <img src="assets/img/about2.jpg" alt="packaging" style="widows: 50px;">
+        <img src="https://static01.nyt.com/images/2007/12/12/dining/12charity-600.jpg" style="widows: 50px;">
         <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
             <h3>New York</h3>
         </div>
     </div>
     <div class="mySlides w3-display-container w3-center">
-        <img src="assets/img/about3.jpg" alt="marathon"
+        <img src="https://better.net/chicago/wp-content/uploads/sites/2/2017/07/charity-run-Run-for-Gus-Lurie.jpg"
             style="widows: 50px;">
         <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
             <h3>Chicago</h3>
         </div>
     </div>
-    <!--Container-->
+
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
         <h2 class="w3-wide">Giv-Ease</h2>
         <p class="w3-opacity"><i>We love giving back to our communities! </i></p>
@@ -91,23 +76,7 @@
             and help raise awarness to these everyday causes that is affecting our communites and our world. YOU can
             make a difference today!
         </p>
-        <!--Script tag for Slideshow-->
-        <script>
-            var myIndex = 0;
-            carousel();
-            
-            function carousel() {
-              var i;
-              var x = document.getElementsByClassName("mySlides");
-              for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";  
-              }
-              myIndex++;
-              if (myIndex > x.length) {myIndex = 1}    
-              x[myIndex-1].style.display = "block";  
-              setTimeout(carousel, 2000); // Change image every 2 seconds
-            }
-            </script>
+
 
 </body>
 
