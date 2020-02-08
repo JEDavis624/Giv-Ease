@@ -1,71 +1,14 @@
 // ========== API Keys ==========
 const googleAPIkey = 'AIzaSyB3_355xgTrbvLb3K_FE_2bpig4WBtCGgM';
 const charityAPIkey = '3ea2f1ef16ab9b240050c2cf1c055650';
-// ========== CORS Fix ==========
-jQuery.ajaxPrefilter(function (options) {
-    if (options.crossDomain && jQuery.support.cors) {
-        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-    }
-});
-// ========== Query Variables ==========
-// let charityName = "&charityName=" + $("#charityName").val().trim();
-// let city = "&city=" + $("#city-input").val().trim();
-// let zip = "&zipCode=" + $("#zip").val().trim();
-// let searchTerm = "&searchTerm=" + $("#searchTerm").val().trim();
-// ========== Query URL ==========
-let queryURL = "http://data.orghunter.com/v1/charitysearch?user_key=" + charityAPIkey + "&eligible=1&" //+ charityName + city + zip + searchTerm;
-// ========== Charity Ajax Call ==========
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function (response) {
-    let orgArray = [];
-    for (i = 0; i < response.data.length; i++) {
-        // ========== Charity Geolocation Object ==========
-        const orgObject = {
-            name: response.data[i].charityName,
-            url: response.data[i].url,
-            donationUrl: response.data[i].donationUrl,
-            location: response.data[i].city + ', ' + response.data[i].state,
-            latitude: response.data[i].latitude,
-            longitude: response.data[i].longitude
-        }
-        // ========== MVP Display ==========
-        $('#displayDiv').append('==============================' + '<br>'
-            + 'Charity: ' + response.data[i].charityName +
-            '<br>' + '<a href=' + response.data[i].url + '>' + 'Get Info</a>' +
-            '<br>' + '<a href=' + response.data[i].donationUrl + '>' + 'Donate</a>' +
-            '<br>' + 'Location: ' + response.data[i].city + ', ' + response.data[i].state +
-            '<br>' + 'Mission Statement: ' + response.data[i].missionStatement +
-            '<br>');
-        // ========== Charity Array Population ==========
-        orgArray.push(orgObject);
-    };
-    console.log('========== Org Array ==========');
-    console.log(orgArray);
-    initMap(orgArray);
-});
-// Note: This example requires that you consent to location sharing when
-// prompted by your browser. If you see the error "The Geolocation service
-// failed.", it means you probably did not give permission for the browser to
-// locate you.
-var map, infoWindow;
-function initMap(orgArray) {
+// ========== Page Load Map Centered on User Location ==========
+function initMapStart() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: -34.397, lng: 150.644 },
+        center: { lat: 41.8781, lng: -87.6298 },
         zoom: 6
     });
     infoWindow = new google.maps.InfoWindow;
-    // ========== Google Maps API Marker Population ==========
-    for (i = 0; i < orgArray.length; i++) {
-        let myLatlng = new google.maps.LatLng(orgArray[i].latitude, orgArray[i].longitude);
-        let marker = new google.maps.Marker({
-            position: myLatlng,
-            title: orgArray[i].name
-        });
-        // To add the marker to the map, call setMap();
-        marker.setMap(map);
-    };
+
     // ========== Try HTML5 geolocation ==========
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -93,5 +36,105 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         'Error: Your browser does not support geolocation.');
     infoWindow.open(map);
 }
+// ========== On Click Function ==========
+$("#find-charity").click(function () {
+    event.preventDefault();
+    $("#displayDiv").empty();
+    // ========== CORS Fix ==========
+    jQuery.ajaxPrefilter(function (options) {
+        if (options.crossDomain && jQuery.support.cors) {
+            options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+        }
+    });
+    // ========== Query Variables ==========
+    let city = "&city=" + $("#city-input").val().trim();
+    let state = "&state=" + $("#state-input").val().trim();
+    let zip = "&zipCode=" + $("#zip").val().trim();
+    let searchTerm = "&searchTerm=" + $("#searchTerm").val().trim();
+    // ========== Query URL ==========
+    let queryURL = "http://data.orghunter.com/v1/charitysearch?user_key=" + charityAPIkey + "&eligible=1" + city + state + zip + searchTerm;
+    // ========== Charity Ajax Call ==========
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        let orgArray = [];
+        for (i = 0; i < response.data.length; i++) {
+            // ========== Charity Geolocation Object ==========
+            const orgObject = {
+                name: response.data[i].charityName,
+                missionStatement: response.data[i].missionStatement,
+                url: response.data[i].url,
+                donationUrl: response.data[i].donationUrl,
+                location: response.data[i].city + ', ' + response.data[i].state,
+                latitude: response.data[i].latitude,
+                longitude: response.data[i].longitude
+            }
+            // ========== MVP Display ==========
+            $('#displayDiv').append('==============================' + '<br>'
+                + 'Charity: ' + response.data[i].charityName +
+                '<br>' + '<a href=' + response.data[i].url + '>' + 'Get Info</a>' +
+                '<br>' + '<a href=' + response.data[i].donationUrl + '>' + 'Donate</a>' +
+                '<br>' + 'Location: ' + response.data[i].city + ', ' + response.data[i].state +
+                '<br>' + 'Mission Statement: ' + response.data[i].missionStatement +
+                '<br>');
+            // ========== Charity Array Population ==========
+            orgArray.push(orgObject);
+        };
+        console.log('========== Org Array ==========');
+        console.log(orgArray);
+        initMap(orgArray);
+    });
+});
+function toggleBounce() {
+    if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+    } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+}
+// Note: This example requires that you consent to location sharing when
+// prompted by your browser. If you see the error "The Geolocation service
+// failed.", it means you probably did not give permission for the browser to
+// locate you.
+let map, infoWindow;
+function initMap(orgArray) {
+    let searchLat = parseInt(orgArray[0].latitude);
+    let searchLong = parseInt(orgArray[0].longitude);
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: searchLat, lng: searchLong },
+        zoom: 6
+    });
+    infoWindow = new google.maps.InfoWindow;
+    // ========== Google Maps API Marker Population ==========
+    for (i = 0; i < orgArray.length; i++) {
+        let myLatlng = new google.maps.LatLng(orgArray[i].latitude, orgArray[i].longitude);
+        // let contentString = '<div id="content">' +
+        //     '<div id="siteNotice">' +
+        //     '</div>' +
+        //     '<h1 id="firstHeading" class="firstHeading">' + orgArray[i].name + '</h1>' +
+        //     '<div id="bodyContent">' +
+        //     '<p>' + orgArray[i].missionStatement + '</p>' +
+        //     '<p>' + '<a href="' + orgArray[i].url + '">Get More Info</a> ' +
+        //     '<p>' + '<a href="' + orgArray[i].donationUrl + '">Donate Here!</a> ' +
+        //     '</p>' +
+        //     '</div>' +
+        //     '</div>';
+        // infowindow = new google.maps.InfoWindow({
+        //     content: contentString
+        // });
+        let marker = new google.maps.Marker({
+            map: map,
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+            position: myLatlng,
+            title: orgArray[i].name
+        });
+        // marker.addListener('click', function (orgArray) {
+        //     infowindow.open(map, marker);
+        // });
+        // To add the marker to the map, call setMap();
+        marker.setMap(map);
+    };
 
-
+}
