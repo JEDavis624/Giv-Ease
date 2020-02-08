@@ -5,35 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' type='text/css' href='assets/css/reset.css'>
+    <script src='https://kit.fontawesome.com/f843bc76a3.js' crossorigin='anonymous'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' href='assets/css/style.css'>
     <title>Giv-Ease Contact</title>
 </head>
-<link rel='stylesheet' type='text/css' href='assets/css/reset.css'>
-<script src='https://kit.fontawesome.com/f843bc76a3.js' crossorigin='anonymous'></script>
-<link rel='stylesheet' type='text/css' href='assets/css/style.css'>
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 
 <body>
-
+<!--NAVBAR-->
     <div class="w3-content" style="max-width:2000px;margin-top:46px"></div>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
         <a href="index.html">Home</a>
-        <a href="About.html">About</a>
-        <a href="Contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
     </div>
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
-
     <!--TopNav-->
     <div class="topnav" id="myTopnav">
         <a href="index.html" class="active">Giv-Ease</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
         </a>
+    </div>
+    <!-- The Contact Section -->
+    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+        <h2 class="w3-wide">Contact</h2>
+        <p class="w3-opacity"><i>Have any questions?</i></p>
+        <p class="w3-justify">Have a question? We will help answer your questions, whether through email, phone call, or
+            our social media down below.</p>
+        <div class="w3-row w3-padding-32">
+            <div class="w3-third">
+                <h4>Jariel Brown</h4>
+                <img src="assets/img/jariel_pic.jpg" class="w3-round w3-margin-bottom" alt="Jariel Brown"
+                    style="width:60%">
+                <p>Email: jariel.brown23@gmail.com</p>
+            </div>
+            <div class="w3-third">
+                <h4>John Davis</h4>
+                <img src="assets/img/JD-PIC.jpg" class="w3-round w3-margin-bottom" alt="John Davis" style="width:60%">
+                <p>Email:</p>
+            </div>
+            <div class="w3-third">
+                <h4>Vince Napolitano</h4>
+                <img src="assets/img/VN-PIC.png" class="w3-round" alt="Vince Napolitano" style="width:60%">
+                <p>Email:</p>
+            </div>
+        </div>
+    </div>
+    </div>
     </div>
     <script>
         function openNav() {
@@ -43,38 +69,6 @@
             document.getElementById("mySidenav").style.width = "0";
         }
     </script>
-
-    <!-- The Band Section -->
-    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-        <h2 class="w3-wide">Contact</h2>
-        <p class="w3-opacity"><i>Have any questions?</i></p>
-        <p class="w3-justify">Have a question? We will help answer your questions, whether through email, phone call, or our social media down below.</p>
-            <div class="w3-row w3-padding-32">
-                <div class="w3-third">
-                  <h4>Jariel Brown</h4>
-                  <img src="assets/img/jariel_pic.jpg" class="w3-round w3-margin-bottom" alt="Jariel Brown" style="width:60%">
-                  <p>Email:</p>
-                  <p>Phone Number:</p>
-                  <p>Social Media:</p>
-                </div>
-                <div class="w3-third">
-                  <h4>John Davis</h4>
-                  <img src="assets/img/JD-PIC.jpg" class="w3-round w3-margin-bottom" alt="John Davis" style="width:60%">
-                  <p>Email:</p>
-                  <p>Phone Number:</p>
-                  <p>Social Media:</p>
-                </div>
-                <div class="w3-third">
-                  <h4>Vince Napolitano</h4>
-                  <img src="assets/img/VN-PIC.png" class="w3-round" alt="Vince Napolitano" style="width:60%">
-                  <p>Email:</p>
-                  <p>Phone Number:</p>
-                  <p>Social Media:</p>
-                </div>
-              </div>
-            </div>
-        </div>
-    </div>
 </body>
 
 </html>
