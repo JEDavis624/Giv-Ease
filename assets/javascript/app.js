@@ -3,6 +3,7 @@ const googleAPIkey = 'AIzaSyB3_355xgTrbvLb3K_FE_2bpig4WBtCGgM';
 const charityAPIkey = '3ea2f1ef16ab9b240050c2cf1c055650';
 // ========== Page Load Map Centered on User Location ==========
 function initMapStart() {
+
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 41.8781, lng: -87.6298 },
         zoom: 6
