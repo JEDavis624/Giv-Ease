@@ -26,55 +26,68 @@
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
     </div>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
 
-    <!--TopNav-->
-    <div class="topnav" id="myTopnav">
-        <a href="index.html" class="active">Giv-Ease</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
-    </div>
+    <main>
+        <nav class="main-nav">
+            <span class="hamburger-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
 
-    <!--MAP-->
-    <div id="map"></div>
-    <!--IMAGE-->
-    <div class="hero-image">
-        <div class="container" style="float: right;">
-            <img src="assets/img/index-pic.jpg" alt="GivEase" class="image">
-
-            <div class="overlay">
-                <div class="text">Want to Make A Donation Today ? Don't Know What to Look For ?, Well you've come to the
-                    right place to get started !</div>
-
+            <!--TopNav-->
+            <div class="topnav" id="myTopnav">
+                <a href="index.html" class="active">Giv-Ease</a>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
             </div>
-        </div>
+        </nav>
 
-        <!--USER INPUT FORM-->
-        <form id="city-form">
-            <label for="city-input">Search for a Charity</label><br>
-            <input id="city-input" type="text" placeholder="City.." name="search">
-            <input id="state-input" type="text" placeholder="State Abbreviation.." name="search">
-            <input id="zip" type="text" placeholder="Zip.." name="search">
-            <input id="searchTerm" type="text" placeholder="Name or Keyword.." name="search">
-            <input id="find-charity" type="submit" value="Search">
-        </form>
-        <!--SEARCH RESULTS-->
-        <div id='displayDiv'></div>
-        <script>
-            function openNav() {
-                document.getElementById("mySidenav").style.width = "250px";
-            }
-            function closeNav() {
-                document.getElementById("mySidenav").style.width = "0";
-            }
-        </script>
-        <script rel='javascript' type='text/javascript' src='assets/javascript/app.js'></script>
-        <!--Google Maps API functionality. Do not touch below.-->
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3_355xgTrbvLb3K_FE_2bpig4WBtCGgM&callback=initMapStart"
-            async defer></script>
-        <!--Google Maps API functionality. Do not touch above.-->
+        <section class="content-container">
+            <section class="map-container">
+                <!--MAP-->
+                <div id="map"></div>
+                <!--USER INPUT FORM-->
+                <form id="city-form">
+                    <label for="city-input">Search for a Charity</label><br>
+                    <input id="city-input" type="text" placeholder="City.." name="search">
+                    <input id="state-input" type="text" placeholder="State Abbreviation.." name="search">
+                    <input id="zip" type="text" placeholder="Zip.." name="search">
+                    <input id="searchTerm" type="text" placeholder="Name or Keyword.." name="search">
+                    <input id="find-charity" type="submit" value="Search">
+                </form>
+                <!--SEARCH RESULTS-->
+                <div id='displayDiv'></div>
+            </section>
+
+            <!--IMAGE-->
+            <section class="hero-image-container">
+                <div class="hero-image-wrapper">
+                    <div class="overlay">
+                        <div class="text">Want to Make A Donation Today ? Don't Know What to Look For ?, Well you've
+                            come to
+                            the
+                            right place to get started !</div>
+
+                    </div>
+
+                    <img src="assets/img/index-pic.jpg" alt="GivEase" class="hero-image">
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+    <script rel='javascript' type='text/javascript' src='assets/javascript/app.js'></script>
+    <!--Google Maps API functionality. Do not touch below.-->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3_355xgTrbvLb3K_FE_2bpig4WBtCGgM&callback=initMapStart"
+        async defer></script>
+    <!--Google Maps API functionality. Do not touch above.-->
 </body>
 
 </html>
