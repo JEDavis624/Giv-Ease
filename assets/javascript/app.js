@@ -13,7 +13,7 @@ jQuery.ajaxPrefilter(function (options) {
 // let zip = "&zipCode=" + $("#zip").val().trim();
 // let searchTerm = "&searchTerm=" + $("#searchTerm").val().trim();
 // ========== Query URL ==========
-let queryURL = "http://data.orghunter.com/v1/charitysearch?user_key=" + charityAPIkey + "&eligible=1&" + charityName + city + zip + searchTerm;
+let queryURL = "http://data.orghunter.com/v1/charitysearch?user_key=" + charityAPIkey + "&eligible=1&" //+ charityName + city + zip + searchTerm;
 // ========== Charity Ajax Call ==========
 $.ajax({
     url: queryURL,
@@ -93,3 +93,5 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         'Error: Your browser does not support geolocation.');
     infoWindow.open(map);
 }
+
+
