@@ -1,6 +1,13 @@
 // ========== API Keys ==========
 const googleAPIkey = 'AIzaSyB3_355xgTrbvLb3K_FE_2bpig4WBtCGgM';
 const charityAPIkey = '3ea2f1ef16ab9b240050c2cf1c055650';
+// ========== Hamburger Nav Functionality ==========
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
 // ========== Page Load Map Centered on User Location ==========
 function initMapStart() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -52,7 +59,7 @@ $("#find-charity").click(function () {
     let zip = "&zipCode=" + $("#zip").val().trim();
     let searchTerm = "&searchTerm=" + $("#searchTerm").val().trim();
     // ========== Query URL ==========
-    let queryURL = "http://data.orghunter.com/v1/charitysearch?user_key=" + charityAPIkey + "&eligible=1" + city + state + zip + searchTerm;
+    let queryURL = "http://data.orghunter.com/v1/charitysearch?user_key=" + charityAPIkey + "&eligible=1&rows=21" + city + state + zip + searchTerm;
     // ========== Charity Ajax Call ==========
     $.ajax({
         url: queryURL,
@@ -71,13 +78,16 @@ $("#find-charity").click(function () {
                 longitude: response.data[i].longitude
             }
             // ========== MVP Display ==========
-            $('#displayDiv').append('==============================' + '<br>'
-                + 'Charity: ' + response.data[i].charityName +
-                '<br>' + '<a href=' + response.data[i].url + '>' + 'Get Info</a>' +
-                '<br>' + '<a href=' + response.data[i].donationUrl + '>' + 'Donate</a>' +
-                '<br>' + 'Location: ' + response.data[i].city + ', ' + response.data[i].state +
-                '<br>' + 'Mission Statement: ' + response.data[i].missionStatement +
-                '<br>');
+            $('#displayDiv').append('<div class="card" style="width: 18rem;">' +
+                '<div class="card-header">' + response.data[i].charityName + '</div>'
+                + '<ul class="list-group list-group-flush">'
+                + '<li class="list-group-item">' + '<a href=' + response.data[i].url + '>' + 'Get Info</a>' + '</li>'
+                + '<li class="list-group-item">' + '<a href=' + response.data[i].donationUrl + '>' + 'Donate</a>' + '</li>'
+                + '<li class="list-group-item">' + response.data[i].city + ', ' + response.data[i].state + ' ' + response.data[i].zipCode + '</li>'
+                + ' <li class="list-group-item">' + response.data[i].missionStatement + '</li>'
+                + '</ul>'
+                + '</div>'
+            );
             // ========== Charity Array Population ==========
             orgArray.push(orgObject);
         };
@@ -136,5 +146,17 @@ function initMap(orgArray) {
         // To add the marker to the map, call setMap();
         marker.setMap(map);
     };
-
+}
+let myIndex = 0;
+carousel();
+function carousel() {
+    let i;
+    let x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) { myIndex = 1 }
+    x[myIndex - 1].style.display = "block";
+    setTimeout(carousel, 5000); // Change image every 5 seconds
 }

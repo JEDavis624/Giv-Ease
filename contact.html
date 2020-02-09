@@ -19,14 +19,14 @@
 
 <body>
   <!--NAVBAR-->
-  <div class="w3-content" style="max-width:2000px;margin-top:46px"></div>
+  <div class="w3-content" style="max-width:2000px"></div>
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </div>
-  <main>
+  <main class="main-body">
     <nav class="main-nav">
       <span class="hamburger-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
       <!--TopNav-->
@@ -66,14 +66,8 @@
         </div>
       </div>
   </main>
-  <script>
-    function openNav() {
-      document.getElementById("mySidenav").style.width = "250px";
-    }
-    function closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
-    }
-  </script>
+  <script rel='javascript' type='text/javascript' src='assets/javascript/app.js'></script>
+
 </body>
 
 </html>
