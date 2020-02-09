@@ -19,15 +19,16 @@
 
 <body>
     <!--NAVBAR-->
-    <div class="w3-content" style="max-width:2000px;margin-top:46px"></div>
+    <div class="w3-content" style="max-width:2000px"></div>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
     </div>
-    <main>
+    <main class="main-body">
         <nav class="main-nav">
+            <!--Hamburger-->
             <span class="hamburger-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
             <!--TopNav-->
             <div class="topnav" id="myTopnav">
@@ -42,39 +43,32 @@
                 <!--MAP-->
                 <div id="map"></div>
                 <!--USER INPUT FORM-->
-                <form id="city-form">
-                    <label for="city-input">Search for a Charity</label><br>
-                    <input id="city-input" type="text" placeholder="City.." name="search">
-                    <input id="state-input" type="text" placeholder="State Abbreviation.." name="search">
-                    <input id="zip" type="text" placeholder="Zip.." name="search">
-                    <input id="searchTerm" type="text" placeholder="Name or Keyword.." name="search">
-                    <input id="find-charity" type="submit" value="Search">
-                </form>
-                <!--SEARCH RESULTS-->
-                <div id='displayDiv'></div>
             </section>
             <!--IMAGE-->
             <section class="hero-image-container">
                 <div class="hero-image-wrapper">
                     <div class="overlay">
-                        <div class="text">Want to Make A Donation Today ? Don't Know What to Look For ?, Well you've
-                            come to
-                            the
-                            right place to get started !</div>
+                        <div class="overlay-text">Want to make a charitable donation, but don't know where to look?
+                            You've come to the right place to get started!</div>
                     </div>
                     <img src="assets/img/index-pic.jpg" alt="GivEase" class="hero-image">
                 </div>
             </section>
         </section>
+        <!--USER INPUT FORM-->
+        <div class="searchDiv">
+            <form class="search-form">
+                <label for="city-input">Search for a Charity</label><br>
+                <input id="city-input" type="text" placeholder="City.." name="search">
+                <input id="state-input" type="text" placeholder="State Abbreviation.." name="search">
+                <input id="zip" type="text" placeholder="Zip.." name="search">
+                <input id="searchTerm" type="text" placeholder="Name or Keyword.." name="search">
+                <input id="find-charity" type="submit" value="Search">
+            </form>
+        </div>
+        <!--SEARCH RESULTS-->
+        <div id='displayDiv' class="displayDiv"></div>
     </main>
-    <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        }
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-    </script>
     <script rel='javascript' type='text/javascript' src='assets/javascript/app.js'></script>
     <!--Google Maps API functionality. Do not touch below.-->
     <script

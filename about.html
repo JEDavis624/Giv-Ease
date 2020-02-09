@@ -19,14 +19,14 @@
 
 <body>
     <!--NAVBAR-->
-    <div class="w3-content" style="max-width:2000px;margin-top:46px"></div>
+    <div class="w3-content" style="max-width:2000px"></div>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
     </div>
-    <main>
+    <main class="main-body">
         <nav class="main-nav">
             <span class="hamburger-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
             <!--TopNav-->
@@ -58,38 +58,15 @@
         </div>
         <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
             <h2 class="w3-wide">Giv-Ease</h2>
-            <p class="w3-opacity"><i>We love giving back to our communities! </i></p>
-            <p class="w3-justify">Welcome to our Website for charities and communites that you can personally give back
-                to
-                or participate in!
-                Our focus is to try to bring people together and help make a change in our world, You can make a change
-                today
-                and help raise awarness to these everyday causes that is affecting our communites and our world. YOU can
-                make a difference today!
+            <p class="w3-opacity"><i>We love giving back to our communities!</i></p>
+            <p class="w3-justify text">Welcome to Giv-Ease. An application designed to help you locate charities and
+                communites that you can personally donate to, or participate in!
+                Our focus is to assist you in making a change to your communities and our world. You can make a
+                difference today!
             </p>
-    </main>
-    <!--Script tag for Slideshow-->
-    <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        }
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-        var myIndex = 0;
-        carousel();
-        function carousel() {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            myIndex++;
-            if (myIndex > x.length) { myIndex = 1 }
-            x[myIndex - 1].style.display = "block";
-            setTimeout(carousel, 2000); // Change image every 2 seconds
-        }
-    </script>
+        </div>
+    </main class="main-body">
+    <script rel='javascript' type='text/javascript' src='assets/javascript/app.js'></script>
 </body>
 
 </html>
