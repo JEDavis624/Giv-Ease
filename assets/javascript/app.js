@@ -55,7 +55,7 @@ $("#find-charity").click(function () {
     });
     // ========== Query Variables ==========
     let city = "&city=" + $("#city-input").val().trim();
-    let state = "&state=" + $("#state-input").val().trim();
+    let state = "&state=" + $("#state-input").val().toUpperCase().trim();
     let zip = "&zipCode=" + $("#zip").val().trim();
     let searchTerm = "&searchTerm=" + $("#searchTerm").val().trim();
     // ========== Query URL ==========
