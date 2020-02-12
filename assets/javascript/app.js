@@ -55,7 +55,7 @@ $("#find-charity").click(function () {
     });
     // ========== Query Variables ==========
     let city = "&city=" + $("#city-input").val().trim();
-    let state = "&state=" + $("#state-input").val().trim();
+    let state = "&state=" + $("#state-input").val().toUpperCase().trim();
     let zip = "&zipCode=" + $("#zip").val().trim();
     let searchTerm = "&searchTerm=" + $("#searchTerm").val().trim();
     // ========== Query URL ==========
@@ -91,8 +91,6 @@ $("#find-charity").click(function () {
             // ========== Charity Array Population ==========
             orgArray.push(orgObject);
         };
-        console.log('========== Org Array ==========');
-        console.log(orgArray);
         initMap(orgArray);
     });
 });
@@ -119,20 +117,6 @@ function initMap(orgArray) {
     // ========== Google Maps API Marker Population ==========
     for (i = 0; i < orgArray.length; i++) {
         let myLatlng = new google.maps.LatLng(orgArray[i].latitude, orgArray[i].longitude);
-        // let contentString = '<div id="content">' +
-        //     '<div id="siteNotice">' +
-        //     '</div>' +
-        //     '<h1 id="firstHeading" class="firstHeading">' + orgArray[i].name + '</h1>' +
-        //     '<div id="bodyContent">' +
-        //     '<p>' + orgArray[i].missionStatement + '</p>' +
-        //     '<p>' + '<a href="' + orgArray[i].url + '">Get More Info</a> ' +
-        //     '<p>' + '<a href="' + orgArray[i].donationUrl + '">Donate Here!</a> ' +
-        //     '</p>' +
-        //     '</div>' +
-        //     '</div>';
-        // infowindow = new google.maps.InfoWindow({
-        //     content: contentString
-        // });
         let marker = new google.maps.Marker({
             map: map,
             draggable: true,
@@ -140,23 +124,7 @@ function initMap(orgArray) {
             position: myLatlng,
             title: orgArray[i].name
         });
-        // marker.addListener('click', function (orgArray) {
-        //     infowindow.open(map, marker);
-        // });
         // To add the marker to the map, call setMap();
         marker.setMap(map);
     };
-}
-let myIndex = 0;
-carousel();
-function carousel() {
-    let i;
-    let x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-    }
-    myIndex++;
-    if (myIndex > x.length) { myIndex = 1 }
-    x[myIndex - 1].style.display = "block";
-    setTimeout(carousel, 5000); // Change image every 5 seconds
 }
