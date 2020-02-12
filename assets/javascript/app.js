@@ -12,7 +12,7 @@ function closeNav() {
 function initMapStart() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 41.8781, lng: -87.6298 },
-        zoom: 6
+        zoom: 10
     });
     infoWindow = new google.maps.InfoWindow;
 
@@ -58,8 +58,9 @@ $("#find-charity").click(function () {
     let state = "&state=" + $("#state-input").val().toUpperCase().trim();
     let zip = "&zipCode=" + $("#zip").val().trim();
     let searchTerm = "&searchTerm=" + $("#searchTerm").val().trim();
+    let resultNum = "&rows=" + $("#resultNum").val().trim();
     // ========== Query URL ==========
-    let queryURL = "http://data.orghunter.com/v1/charitysearch?user_key=" + charityAPIkey + "&eligible=1&rows=21" + city + state + zip + searchTerm;
+    let queryURL = "http://data.orghunter.com/v1/charitysearch?user_key=" + charityAPIkey + "&eligible=1&rows=21" + city + state + zip + searchTerm + resultNum;
     // ========== Charity Ajax Call ==========
     $.ajax({
         url: queryURL,
@@ -79,10 +80,12 @@ $("#find-charity").click(function () {
             }
             // ========== MVP Display ==========
             $('#displayDiv').append('<div class="card" style="width: 18rem;">' +
-                '<div class="card-header">' + response.data[i].charityName + '</div>'
+                '<div class="card-header">' 
+                + response.data[i].charityName 
+                + '</div>'
                 + '<ul class="list-group list-group-flush">'
-                + '<li class="list-group-item">' + '<a href=' + response.data[i].url + '>' + 'Get Info</a>' + '</li>'
-                + '<li class="list-group-item">' + '<a href=' + response.data[i].donationUrl + '>' + 'Donate</a>' + '</li>'
+                + '<li class="list-group-item">' + '<a href=' + response.data[i].url + ' target=' + '_blank' + '>' + 'Get Info</a>' + '</li>'
+                + '<li class="list-group-item">' + '<a href=' + response.data[i].donationUrl + ' target=' + '_blank' + '>' + 'Donate</a>' + '</li>'
                 + '<li class="list-group-item">' + response.data[i].city + ', ' + response.data[i].state + ' ' + response.data[i].zipCode + '</li>'
                 + ' <li class="list-group-item">' + response.data[i].missionStatement + '</li>'
                 + '</ul>'
@@ -111,7 +114,7 @@ function initMap(orgArray) {
     let searchLong = parseInt(orgArray[0].longitude);
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: searchLat, lng: searchLong },
-        zoom: 6
+        zoom: 8
     });
     infoWindow = new google.maps.InfoWindow;
     // ========== Google Maps API Marker Population ==========
